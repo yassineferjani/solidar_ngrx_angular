@@ -7,22 +7,26 @@ import { Association } from '../models/Association.model';
   providedIn: 'root'
 })
 export class AssociationService {
-  host:string = "http://localhost:3000" 
+  host: string = "http://localhost:3000"
   constructor(private http: HttpClient) { }
 
-  getAllAssociations():Observable<Association[]>{
-    return this.http.get<Association[]>(this.host+"/associations");
+  getAllAssociations(): Observable<Association[]> {
+    return this.http.get<Association[]>(this.host + "/associations");
   }
 
-  getAssociation(id:number):Observable<Association>{
-    return this.http.get<Association>(this.host+"associations/"+id);
+  getAssociation(id: number): Observable<Association> {
+    return this.http.get<Association>(this.host + "/associations/" + id);
   }
 
-  updateAssociation(association:Association):Observable<Association>{
-    return this.http.put<Association>(this.host+"/associations/"+association.id,association);
+  updateAssociation(association: Association): Observable<Association> {
+    return this.http.put<Association>(this.host + "/associations/" + association.id, association);
   }
 
-  deleteAssociation(id:number):Observable<void>{
-    return this.http.delete<void>(this.host+"/associations/"+id);
+  saveAssociation(association: Association): Observable<Association> {
+    return this.http.post<Association>(this.host + "/associations/", association);
+  }
+
+  deleteAssociation(id: number): Observable<void> {
+    return this.http.delete<void>(this.host + "/associations/" + id);
   }
 }

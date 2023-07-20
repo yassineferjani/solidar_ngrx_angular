@@ -20,12 +20,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 @NgModule({
   declarations: [
     AppComponent,
-    AssociationComponent,
-    AssociationListComponent,
-    AssociationItemComponent,
-    AssociationNavbarComponent,
-    AssociationNewComponent,
-    AssociationEditComponent
+    
   ],
   imports: [
     BrowserModule,

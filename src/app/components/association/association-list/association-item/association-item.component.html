@@ -4,4 +4,15 @@
     <td>{{association.address}}</td>
     <td>{{association.logo}}</td>
     <td>{{association.dateCreation}}</td>
+    <td>
+      <button (click)="onDelete(association)" class="btn btn-danger">
+        <i class="fa fa-trash"></i>
+      </button>
+    </td>
+
+    <td>
+      <button (click)="onEdit(association)" class="btn btn-success">
+        <i class="fa fa-edit"></i>
+      </button>
+    </td>
   </tr>

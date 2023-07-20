@@ -7,7 +7,7 @@ import { AssociationEditComponent } from './association-edit/association-edit.co
 const routes: Routes = [
 {path:"" , component:AssociationComponent},
 {path:"new" , component:AssociationNewComponent},
-{path:"edit" , component:AssociationEditComponent},
+{path:"edit/:id" , component:AssociationEditComponent},
 
  ];
 

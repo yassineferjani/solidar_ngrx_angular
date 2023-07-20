@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { GetAllAssociation } from 'src/app/ngrx/association/association.actions';
 
@@ -8,11 +9,15 @@ import { GetAllAssociation } from 'src/app/ngrx/association/association.actions'
   styleUrls: ['./association-navbar.component.css']
 })
 export class AssociationNavbarComponent implements OnInit{
-  constructor(private store:Store<any>){}
+  constructor(private store:Store<any>, private router:Router){}
   ngOnInit(): void {
   }
   
   onGetAllAssociations(){
-    this.store.dispatch(new GetAllAssociation({}))
+    this.store.dispatch(new GetAllAssociation({}));
+  }
+
+  onNewAssociation(){
+    this.router.navigateByUrl("/association/new");
   }
 }
