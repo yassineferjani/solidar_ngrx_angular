@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AssociationComponent } from './components/association/association.component';
 
 const routes: Routes = [
-  {
-    path:"association" , component:AssociationComponent
-  }
+  {path:"association", loadChildren:()=>import("./components/association/association.module")
+    .then(m=> m.AssociationModule)
+}
 ];
 
 @NgModule({
