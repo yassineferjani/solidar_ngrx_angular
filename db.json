@@ -1,0 +1,8 @@
+{
+  "associations": [
+    {"id": 1,"name": "Computer","address":"solidar","logo": "src","date": "1975-08-19T23:15:30.000Z"},
+    {"id": 2,"name": "Computer","address":"solidar","logo": "src","date": "1975-08-19T23:15:30.000Z"},
+    {"id": 3,"name": "Computer","address":"solidar","logo": "src","date": "1975-08-19T23:15:30.000Z"}
+  ]
+}
+

@@ -1,0 +1,7 @@
+<table class="table" *ngIf="state">
+    <tr>
+      <th>ID</th><th>Name</th><th>Address</th><th>Logo</th><th>Date</th>
+    </tr>
+    <app-association-item *ngFor="let association of state.associations" [association]="association" style="display: contents"></app-association-item>
+  </table>
+

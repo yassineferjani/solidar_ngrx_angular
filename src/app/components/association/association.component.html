@@ -1,0 +1,17 @@
+<div class="p-4">
+    <app-association-navbar></app-association-navbar>
+    <ng-container *ngIf="associationState$ | async as state" [ngSwitch]="state.dataState">
+       <ng-container *ngSwitchCase="AssociationStateEnum. INITIAL">
+         <div class="p-2"> Initial State</div>
+       </ng-container>
+      <ng-container *ngSwitchCase="AssociationStateEnum.LOADING">
+        <div class="p-2"> Loading...</div>
+      </ng-container>
+      <ng-container *ngSwitchCase="AssociationStateEnum.ERROR">
+        <div class="p-2 text-danger"> {{state.errorMessage | json}}</div>
+      </ng-container>
+      <ng-container *ngSwitchCase="AssociationStateEnum.LOADED" class="p-4">
+        <app-association-list [state]="state"></app-association-list>
+      </ng-container>
+    </ng-container>
+  </div>
