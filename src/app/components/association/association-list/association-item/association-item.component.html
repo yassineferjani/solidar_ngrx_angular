@@ -1,4 +1,24 @@
-<tr *ngIf="association">
+<div class="card" *ngIf="association">
+  <div class="card-body">
+    <h5 class="card-title">{{ association.name }}</h5>
+    <p class="card-text">ID: {{ association.id }}</p>
+    <p class="card-text">Address: {{ association.address }}</p>
+    <p class="card-text">Logo: {{ association.logo }}</p>
+    <p class="card-text">Date Creation: {{ association.dateCreation }}</p>
+    <div class="d-flex justify-content-between">
+      <button (click)="onDelete(association)" class="btn btn-danger">
+        <i class="fa fa-trash"></i>
+      </button>
+
+      <button (click)="onEdit(association)" class="btn btn-success">
+        <i class="fa fa-edit"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- <tr *ngIf="association">
     <td>{{association.id}}</td>
     <td>{{association.name}}</td>
     <td>{{association.address}}</td>
@@ -15,4 +35,4 @@
         <i class="fa fa-edit"></i>
       </button>
     </td>
-  </tr>
+  </tr> -->

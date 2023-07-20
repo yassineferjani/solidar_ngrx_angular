@@ -1,13 +1,6 @@
 {
   "associations": [
     {
-      "id": 2,
-      "name": "Computer",
-      "address": "solidar1",
-      "logo": "src",
-      "dateCreation": "1989-08-16"
-    },
-    {
       "id": 3,
       "name": "Computer",
       "address": "solidar",
@@ -20,6 +13,13 @@
       "address": "solidar",
       "logo": "src",
       "dateCreation": "1975-08-19T23:15:30.000Z"
+    },
+    {
+      "name": "dzada",
+      "address": "dada",
+      "logo": "dazda",
+      "dateCreation": "2023-07-13",
+      "id": 4
     }
   ]
 }
