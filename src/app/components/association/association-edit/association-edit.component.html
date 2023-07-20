@@ -1,4 +1,4 @@
-<!-- <div class="container">
+<div class="container">
     <ng-container *ngIf="associationFormGroup">
         <ng-container *ngIf="state as data">
             <ng-container *ngIf="data.dataState == AssociationStateEnum.LOADING">
@@ -13,7 +13,7 @@
                     <button class="btn btn-success ml-3" (click)="updated()">OKI</button>
                 </div>
             </ng-container>
-            <ng-container *ngIf="data.dataState == AssociationStateEnum.NEW">
+            <ng-container *ngIf="data.dataState == AssociationStateEnum.EDIT">
                 <form [formGroup]="associationFormGroup" (ngSubmit)="onUpdateAssociation()">
 
                     <div class="form-group">
@@ -47,7 +47,4 @@
             </ng-container>
         </ng-container>
     </ng-container>
-</div> -->
-
-
-edit
+</div>

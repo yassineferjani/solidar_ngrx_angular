@@ -8,7 +8,7 @@ import { AssociationListComponent } from './components/association/association-l
 import { AssociationNavbarComponent } from './components/association/association-navbar/association-navbar.component';
 import { AssociationNewComponent } from './components/association/association-new/association-new.component';
 import { AssociationEditComponent } from './components/association/association-edit/association-edit.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AssociationItemComponent } from './components/association/association-list/association-item/association-item.component';
 import { StoreModule } from '@ngrx/store';
@@ -26,6 +26,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     StoreModule.forRoot({catalogAssociation:associationReducer}),
     EffectsModule.forRoot([AssociationEffects]),

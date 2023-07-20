@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, catchError, map, mergeMap, of } from 'rxjs';
 import { AssociationService } from 'src/app/services/association.service';
-import { AssociationActionType, AssociationActions, DeleteAssociationActionError, DeleteAssociationActionSuccess, EditAssociationActionError, EditAssociationActionSuccess, GetAllAssociationSuccess, GetAllAssociation_Error, NewAssociationAction, SaveAssociationActionError, SaveAssociationActionSuccess, UpdateAssociationActionError, UpdateAssociationActionSuccess } from './association.actions';
+import { AssociationActionType, AssociationActions, DeleteAssociationActionError, DeleteAssociationActionSuccess, EditAssociationActionError, EditAssociationActionSuccess, GetAllAssociationSuccess, GetAllAssociation_Error, NewAssociationAction, NewAssociationActionSuccess, SaveAssociationActionError, SaveAssociationActionSuccess, UpdateAssociationActionError, UpdateAssociationActionSuccess } from './association.actions';
 
 
 
@@ -45,7 +45,7 @@ export class AssociationEffects {
         () => this.effectsActions.pipe(
             ofType(AssociationActionType.NEW_ASSOCIATION),
             map((action: AssociationActions) => {
-                return new NewAssociationAction({});
+                return new NewAssociationActionSuccess({});
             })
         )
     );
