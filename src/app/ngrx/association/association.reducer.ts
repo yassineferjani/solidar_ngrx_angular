@@ -1,6 +1,6 @@
-import { Action } from "@ngrx/store";
+import { Action, createReducer, on } from "@ngrx/store";
 import { Association } from "src/app/models/Association.model";
-import { AssociationActionType, AssociationActions } from "./association.actions";
+import { createAssociation, createAssociationSuccess, createAssociationsError, deleteAssociation, deleteAssociationSuccess, deleteAssociationsError, editAssociation, editAssociationError, editAssociationSuccess, getAssociations, getAssociationsError, getAssociationsSuccess, newAssociation, newAssociationError, newAssociationSuccess, updateAssociation, updateAssociationSuccess, updateAssociationsError } from "./association.actions";
 
 export enum AssociationStateEnum {
     LOADING = "Loading",
@@ -16,17 +16,19 @@ export interface AssociationState {
     associations: Association[],
     dataState: AssociationStateEnum,
     errorMessage: string,
-    currentAssociation: Association | null
+    currentAssociation: Association | null,
+    id : number | null
 }
 
 const initialState: AssociationState = {
     associations: [],
     dataState: AssociationStateEnum.INITIAL,
     errorMessage: "",
-    currentAssociation: null
+    currentAssociation: null,
+    id : null
 }
 
-export function associationReducer(state = initialState, action: Action): AssociationState {
+/* export function associationReducer(state = initialState, action: Action): AssociationState {
     switch (action.type) {
         case AssociationActionType.GET_ALL_ASSOCIATION:
             return { ...state, dataState: AssociationStateEnum.LOADING }
@@ -34,8 +36,6 @@ export function associationReducer(state = initialState, action: Action): Associ
             return { ...state, dataState: AssociationStateEnum.LOADED, associations: (<AssociationActions>action).payload }
         case AssociationActionType.GET_ALL_ASSOCIATION_ERROR:
             return { ...state, dataState: AssociationStateEnum.ERROR, errorMessage: (<AssociationActions>action).payload }
-
-        /* Delete Association */
 
         case AssociationActionType.DELETE_ASSOCIATION:
             return { ...state, dataState: AssociationStateEnum.LOADING }
@@ -48,16 +48,12 @@ export function associationReducer(state = initialState, action: Action): Associ
         case AssociationActionType.DELETE_ASSOCIATION_ERROR:
             return { ...state, dataState: AssociationStateEnum.ERROR, errorMessage: (<AssociationActions>action).payload }
 
-        /* New Association */
-
         case AssociationActionType.NEW_ASSOCIATION:
             return { ...state, dataState: AssociationStateEnum.LOADING }
         case AssociationActionType.NEW_ASSOCIATION_SUCCESS:
             return { ...state, dataState: AssociationStateEnum.NEW }
         case AssociationActionType.NEW_ASSOCIATION_ERROR:
             return { ...state, dataState: AssociationStateEnum.ERROR, errorMessage: (<AssociationActions>action).payload }
-
-        /* Save Association */
 
         case AssociationActionType.SAVE_ASSOCIATION:
             return { ...state, dataState: AssociationStateEnum.LOADING }
@@ -68,7 +64,6 @@ export function associationReducer(state = initialState, action: Action): Associ
         case AssociationActionType.SAVE_ASSOCIATION_ERROR:
             return { ...state, dataState: AssociationStateEnum.ERROR, errorMessage: (<AssociationActions>action).payload }
 
-        /* Edit Association */
 
         case AssociationActionType.EDIT_ASSOCIATION:
             return { ...state, dataState: AssociationStateEnum.LOADING }
@@ -77,7 +72,6 @@ export function associationReducer(state = initialState, action: Action): Associ
         case AssociationActionType.EDIT_ASSOCIATION_ERROR:
             return { ...state, dataState: AssociationStateEnum.ERROR, errorMessage: (<AssociationActions>action).payload }
 
-        /* Update Association */
 
         case AssociationActionType.UPDATE_ASSOCIATION:
             return { ...state, dataState: AssociationStateEnum.LOADING }
@@ -95,3 +89,154 @@ export function associationReducer(state = initialState, action: Action): Associ
 
 }
 
+ */
+
+
+const reducer = createReducer<AssociationState>(
+    initialState,
+    on(getAssociations,(state)=>
+    {
+        return {
+            ...state,
+            dataState: AssociationStateEnum.LOADING
+        };
+    }),
+    on(getAssociationsSuccess,(state, {associations})=>{
+        return {
+            ...state,
+            dataState: AssociationStateEnum.LOADED,
+            associations: associations
+        };
+    }),
+    on(getAssociationsError,(state, {errorMessage})=>{
+        return {
+            ...state,
+            dataState:AssociationStateEnum.ERROR,
+            errorMessage: errorMessage
+        };
+    }),
+
+
+    on(deleteAssociation,(state)=>
+    {
+        return {
+            ...state,
+            dataState: AssociationStateEnum.LOADING
+        };
+    }),
+    on(deleteAssociationSuccess,(state, {association})=>{
+        return {
+            ...state,
+            dataState: AssociationStateEnum.LOADED,
+            associations : [...state.associations.filter((a) => a.id !== association.id)]
+        };
+    }),
+    on(deleteAssociationsError,(state, {errorMessage})=>{
+        return {
+            ...state,
+            dataState:AssociationStateEnum.ERROR,
+            errorMessage: errorMessage
+        };
+    }),
+
+
+
+
+    on(createAssociation,(state)=>
+    {
+        return {
+            ...state,
+            dataState: AssociationStateEnum.LOADING
+        };
+    }),
+    on(createAssociationSuccess,(state, {association})=>{
+        return {
+            ...state,
+            dataState: AssociationStateEnum.LOADED,
+            associations: [...state.associations,association]
+        };
+    }),
+    on(createAssociationsError,(state, {errorMessage})=>{
+        return {
+            ...state,
+            dataState:AssociationStateEnum.ERROR,
+            errorMessage: errorMessage
+        };
+    }),
+
+
+
+
+    on(updateAssociation,(state)=>
+    {
+        return {
+            ...state,
+            dataState: AssociationStateEnum.LOADING
+        };
+    }),
+    on(updateAssociationSuccess,(state, {association})=>{
+        return {
+            ...state,
+            dataState: AssociationStateEnum.UPDATED,
+            associations: state.associations.map((a) => a.id == association.id ? association : a),
+        };
+    }),
+    on(updateAssociationsError,(state, {errorMessage})=>{
+        return {
+            ...state,
+            dataState:AssociationStateEnum.ERROR,
+            errorMessage: errorMessage
+        };
+    }),
+
+
+
+    on(newAssociation,(state)=>
+    {
+        return {
+            ...state,
+            dataState: AssociationStateEnum.LOADING
+        };
+    }),
+    on(newAssociationSuccess,(state)=>{
+        return {
+            ...state,
+            dataState: AssociationStateEnum.NEW
+        };
+    }),
+    on(newAssociationError,(state, {errorMessage})=>{
+        return {
+            ...state,
+            dataState:AssociationStateEnum.ERROR,
+            errorMessage: errorMessage
+        };
+    }),
+
+
+    on(editAssociation,(state)=>
+    {
+        return {
+            ...state,
+            dataState: AssociationStateEnum.LOADING
+        };
+    }),
+    on(editAssociationSuccess,(state, {association})=>{
+        return {
+            ...state,
+            dataState: AssociationStateEnum.EDIT,
+            currentAssociation : association
+        };
+    }),
+    on(editAssociationError,(state, {errorMessage})=>{
+        return {
+            ...state,
+            dataState:AssociationStateEnum.ERROR,
+            errorMessage: errorMessage
+        };
+    }),
+
+)
+
+export function associationReducer(state = initialState, actions:Action): AssociationState {
+    return reducer(state, actions);
+}

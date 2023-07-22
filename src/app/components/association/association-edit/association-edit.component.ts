@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { EditAssociationAction, UpdateAssociationAction } from 'src/app/ngrx/association/association.actions';
+import { editAssociation, updateAssociation } from 'src/app/ngrx/association/association.actions';
 import { AssociationState, AssociationStateEnum } from 'src/app/ngrx/association/association.reducer';
 
 @Component({
@@ -25,7 +25,7 @@ export class AssociationEditComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.store.dispatch(new EditAssociationAction(this.associationId));
+    this.store.dispatch(editAssociation({id: this.associationId}));
     this.store.subscribe(
       (state)=> {this.state=state.catalogAssociation
       this.associationFormGroup = this.fb.group({
@@ -52,6 +52,6 @@ export class AssociationEditComponent implements OnInit {
     this.submitted=true;
     if (this.associationFormGroup.invalid)
       return;
-    this.store.dispatch(new UpdateAssociationAction(this.associationFormGroup.value))
+    this.store.dispatch(updateAssociation(this.associationFormGroup.value))
   }
 }

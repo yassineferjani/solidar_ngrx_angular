@@ -23,7 +23,8 @@ export class AssociationService {
   }
 
   saveAssociation(association: Association): Observable<Association> {
-    return this.http.post<Association>(this.host + "/associations/", association);
+    console.log('Data Sent to Server:', association);
+    return this.http.post<Association>(this.host + "/associations", association);
   }
 
   deleteAssociation(id: number): Observable<void> {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { NewAssociationAction, SaveAssociationAction } from 'src/app/ngrx/association/association.actions';
+import { createAssociation, newAssociation } from 'src/app/ngrx/association/association.actions';
 import { AssociationState, AssociationStateEnum } from 'src/app/ngrx/association/association.reducer';
 
 @Component({
@@ -20,7 +20,7 @@ export class AssociationNewComponent implements OnInit {
     private fb:FormBuilder){}
 
   ngOnInit(): void {
-    this.store.dispatch(new NewAssociationAction({}))
+    this.store.dispatch(newAssociation())
     this.store.subscribe((state)=> {
       this.state = state.catalogAssociation;
       if(this.state?.dataState == AssociationStateEnum.NEW){
@@ -35,13 +35,13 @@ export class AssociationNewComponent implements OnInit {
   }
 
   newAssociation(){
-    this.store.dispatch(new NewAssociationAction({}))
+    this.store.dispatch(newAssociation())
   }
 
   onSaveAssociation(){
-    /* if (this.associationFormGroup?.invalid)
-      return; */
-    this.store.dispatch(new SaveAssociationAction(this.associationFormGroup?.value))
+    if (this.associationFormGroup?.invalid)
+      return;
+    this.store.dispatch(createAssociation(this.associationFormGroup?.value))
   }
 
 }

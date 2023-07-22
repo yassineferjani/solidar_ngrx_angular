@@ -8,18 +8,11 @@
       "dateCreation": "1989-08-16"
     },
     {
-      "id": 2,
-      "name": "Computer",
+      "name": "Computer1",
       "address": "solidar",
       "logo": "src",
-      "dateCreation": "1975-08-19T23:15:30.000Z"
-    },
-    {
-      "name": "dzada",
-      "address": "dada",
-      "logo": "dazda",
-      "dateCreation": "2023-07-13",
-      "id": 4
+      "dateCreation": "1989-08-16",
+      "id": 6
     }
   ]
 }

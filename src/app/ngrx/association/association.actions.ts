@@ -1,36 +1,30 @@
-import { Action } from "@ngrx/store";
+import { createAction, props } from "@ngrx/store";
 import { Association } from "src/app/models/Association.model";
 
-export enum AssociationActionType {
-    /* Get all */
+/* export enum AssociationActionType {
     GET_ALL_ASSOCIATION_SUCCESS = "Get All Association successfully",
     GET_ALL_ASSOCIATION_ERROR = "Get All Association with error",
     GET_ALL_ASSOCIATION = "Get All Association",
 
-    /* Delete All ASSOCIATION */
     DELETE_ASSOCIATION = "[ASSOCIATIONs] Delete ASSOCIATION",
     DELETE_ASSOCIATION_SUCCESS = "[ASSOCIATIONs] Delete ASSOCIATION success",
     DELETE_ASSOCIATION_ERROR = "[ASSOCIATIONs] Delete ASSOCIATION error",
 
-    /** New ASSOCIATION */
 
     NEW_ASSOCIATION = "[ASSOCIATIONs] New ASSOCIATION",
     NEW_ASSOCIATION_SUCCESS = "[ASSOCIATIONs] New ASSOCIATION success",
     NEW_ASSOCIATION_ERROR = "[ASSOCIATIONs] New ASSOCIATION error",
 
-    /** Save ASSOCIATION */
 
     SAVE_ASSOCIATION = "[ASSOCIATIONs] Save ASSOCIATION",
     SAVE_ASSOCIATION_SUCCESS = "[ASSOCIATIONs] Save ASSOCIATION success",
     SAVE_ASSOCIATION_ERROR = "[ASSOCIATIONs] Save ASSOCIATION error",
 
-    /** Edit ASSOCIATION */
 
     EDIT_ASSOCIATION = "[ASSOCIATIONs] Edit ASSOCIATION",
     EDIT_ASSOCIATION_SUCCESS = "[ASSOCIATIONs] Edit ASSOCIATION success",
     EDIT_ASSOCIATION_ERROR = "[ASSOCIATIONs] Edit ASSOCIATION error",
 
-    /** Update ASSOCIATION */
 
     UPDATE_ASSOCIATION = "[ASSOCIATIONs] Update ASSOCIATION",
     UPDATE_ASSOCIATION_SUCCESS = "[ASSOCIATIONs] Update ASSOCIATION success",
@@ -54,7 +48,6 @@ export class GetAllAssociation_Error implements Action {
     constructor(public payload: string) { }
 }
 
-/**Delete Association */
 
 export class DeleteAssociationAction implements Action {
     type: AssociationActionType = AssociationActionType.DELETE_ASSOCIATION;
@@ -71,7 +64,6 @@ export class DeleteAssociationActionError implements Action {
     constructor(public payload: string) { }
 }
 
-/**New Association */
 
 export class NewAssociationAction implements Action {
     type: AssociationActionType = AssociationActionType.NEW_ASSOCIATION;
@@ -89,7 +81,6 @@ export class NewAssociationActionError implements Action {
 }
 
 
-/**Save Association */
 
 export class SaveAssociationAction implements Action {
     type: AssociationActionType = AssociationActionType.SAVE_ASSOCIATION;
@@ -106,7 +97,6 @@ export class SaveAssociationActionError implements Action {
     constructor(public payload: string) { }
 }
 
-/**Edit Association */
 
 export class EditAssociationAction implements Action {
     type: AssociationActionType = AssociationActionType.EDIT_ASSOCIATION;
@@ -123,7 +113,6 @@ export class EditAssociationActionError implements Action {
     constructor(public payload: string) { }
 }
 
-/**Update Association */
 
 export class UpdateAssociationAction implements Action {
     type: AssociationActionType = AssociationActionType.UPDATE_ASSOCIATION;
@@ -148,4 +137,115 @@ export type AssociationActions =
     EditAssociationAction | EditAssociationActionSuccess | EditAssociationActionError |
     UpdateAssociationAction | UpdateAssociationActionError | UpdateAssociationActionSuccess
 
-    ;
+    ; */
+
+
+const PREFIX = "[Associations]";
+
+export const getAssociations = createAction(`${PREFIX} Get Associations`);
+export const getAssociationsSuccess = createAction(
+    `${getAssociations.type} Success`,
+    props<{
+        associations: Association[];
+    }>()
+);
+
+export const getAssociationsError = createAction(
+    `${getAssociations.type} Error`,
+    props<{
+        errorMessage: string;
+    }>()
+);
+
+export const createAssociation = createAction(
+    `${PREFIX} Create Association`,
+    props<{
+        association: Association;
+    }>()
+);
+
+export const createAssociationSuccess = createAction(
+    `${createAssociation.type} Success`,
+    props<{
+        association: Association;
+    }>()
+);
+
+export const createAssociationsError = createAction(
+    `${createAssociation.type} Error`,
+    props<{
+        errorMessage: string;
+    }>()
+);
+
+export const updateAssociation = createAction(
+    `${PREFIX} Update Association`,
+    props<{
+        association: Association;
+    }>()
+);
+
+export const updateAssociationSuccess = createAction(
+    `${updateAssociation.type} Success`,
+    props<{
+        association: Association;
+    }>()
+);
+
+export const updateAssociationsError = createAction(
+    `${updateAssociation.type} Error`,
+    props<{
+        errorMessage: string;
+    }>()
+);
+
+export const newAssociation = createAction(
+    `${PREFIX} New Association`);
+
+export const newAssociationSuccess = createAction(
+    `${newAssociation.type} Success`);
+
+export const newAssociationError = createAction(
+    `${newAssociation.type} Error`,
+    props<{
+        errorMessage: string;
+    }>()
+);
+
+export const editAssociation = createAction(
+    `${PREFIX} Edit Association`,
+    props<{ id: number }>()
+);
+export const editAssociationSuccess = createAction(
+    `${editAssociation.type} Success`,
+    props<{
+        association: Association;
+    }>()
+);
+
+export const editAssociationError = createAction(
+    `${editAssociation.type} Error`,
+    props<{
+        errorMessage: string;
+    }>()
+);
+
+export const deleteAssociation = createAction(
+    `${PREFIX} Delete Association`,
+    props<{
+        association: Association;
+    }>()
+);
+export const deleteAssociationSuccess = createAction(
+    `${deleteAssociation.type} Success`,
+    props<{
+        association: Association;
+    }>()
+);
+
+export const deleteAssociationsError = createAction(
+    `${deleteAssociation.type} Error`,
+    props<{
+        errorMessage: string;
+    }>()
+);

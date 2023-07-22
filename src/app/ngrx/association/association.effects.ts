@@ -1,78 +1,104 @@
 import { Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
-import { Observable, catchError, map, mergeMap, of } from 'rxjs';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { AssociationService } from 'src/app/services/association.service';
-import { AssociationActionType, AssociationActions, DeleteAssociationActionError, DeleteAssociationActionSuccess, EditAssociationActionError, EditAssociationActionSuccess, GetAllAssociationSuccess, GetAllAssociation_Error, NewAssociationAction, NewAssociationActionSuccess, SaveAssociationActionError, SaveAssociationActionSuccess, UpdateAssociationActionError, UpdateAssociationActionSuccess } from './association.actions';
+import { createAssociation, 
+    createAssociationSuccess, 
+    createAssociationsError, 
+    deleteAssociation, 
+    deleteAssociationSuccess, 
+    deleteAssociationsError, 
+    editAssociation, 
+    editAssociationError, 
+    editAssociationSuccess, 
+    getAssociations, 
+    getAssociationsError, 
+    getAssociationsSuccess, 
+    newAssociation, 
+    newAssociationSuccess, 
+    updateAssociation, 
+    updateAssociationSuccess, 
+    updateAssociationsError } from './association.actions';
+import { Association } from 'src/app/models/Association.model';
 
 
 
 @Injectable({ providedIn: "root" })
 export class AssociationEffects {
 
-    constructor(private service: AssociationService, private effectsActions: Actions) { }
+    constructor(private readonly actions$: Actions, private service: AssociationService) { }
 
-    getAllAssociation: Observable<Action> = createEffect(
-        () => this.effectsActions.pipe(
-            ofType(AssociationActionType.GET_ALL_ASSOCIATION),
-            mergeMap((action) => {
+    getAssociations$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(getAssociations.type),
+            switchMap(() => {
                 return this.service.getAllAssociations().pipe(
-                    map((association) => new GetAllAssociationSuccess(association)),
-                    catchError((err) => of(new GetAllAssociation_Error(err.message)))
+                    map((association: Association[]) => getAssociationsSuccess({ associations: association })),
+                    catchError((err) => of(getAssociationsError(err.message)))
                 )
             })
         )
     );
 
-    /**Delete Association */
-
-    deleteAssociationEffects: Observable<Action> = createEffect(
-        () => this.effectsActions.pipe(
-            ofType(AssociationActionType.DELETE_ASSOCIATION),
-            mergeMap((action: AssociationActions) => {
-                return this.service.deleteAssociation(action.payload.id)
+    deleteAssociation$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(deleteAssociation),
+            switchMap(({ association }) => {
+                return this.service.deleteAssociation((<Association>association).id)
                     .pipe(
-                        map(() => new DeleteAssociationActionSuccess(action.payload)),
-                        catchError((err) => of(new DeleteAssociationActionError(err.message)))
+                        map(() => deleteAssociationSuccess({association})),
+                        catchError((err) => of(deleteAssociationsError(err.message)))
                     )
             })
         )
     );
 
+    /* 
+
+    createAssociation$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(createAssociation),
+            switchMap(( {association} ) => this.service.saveAssociation(association)),
+            tap(( association) => console.log('Association data:', association)),
+            map((association) => createAssociationSuccess({ association }))
+        )
+    ); */
+
+    createAssociation$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(createAssociation),
+      switchMap(({ association }) =>
+        this.service.saveAssociation(association).pipe(
+          map((response) => createAssociationSuccess({ association: response })),
+          catchError((error) => of(createAssociationsError({ errorMessage: error.message })))
+        )
+      )
+    )
+  );
+
+
     /**New Association */
 
-    newAssociationEffects: Observable<Action> = createEffect(
-        () => this.effectsActions.pipe(
-            ofType(AssociationActionType.NEW_ASSOCIATION),
-            map((action: AssociationActions) => {
-                return new NewAssociationActionSuccess({});
+    newAssociation$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(newAssociation),
+            map(() => {
+                return newAssociationSuccess();
             })
         )
     );
 
-    /**Save Association */
-
-    saveAssociationEffects: Observable<Action> = createEffect(
-        () => this.effectsActions.pipe(
-            ofType(AssociationActionType.SAVE_ASSOCIATION),
-            mergeMap((action: AssociationActions) => {
-                return this.service.saveAssociation(action.payload).pipe(
-                    map((association) => new SaveAssociationActionSuccess(association)),
-                    catchError((err) => of(new SaveAssociationActionError(err.message)))
-                )
-            })
-        )
-    );
+    
 
     /**Edit Association */
 
-    editAssociationEffects: Observable<Action> = createEffect(
-        () => this.effectsActions.pipe(
-            ofType(AssociationActionType.EDIT_ASSOCIATION),
-            mergeMap((action: AssociationActions) => {
-                return this.service.getAssociation(action.payload).pipe(
-                    map((association) => new EditAssociationActionSuccess(association)),
-                    catchError((err) => of(new EditAssociationActionError(err.message)))
+    editAssociation$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(editAssociation),
+            switchMap(({ id }) => {
+                return this.service.getAssociation(id).pipe(
+                    map((association) => editAssociationSuccess({ association })),
+                    catchError((err) => of(editAssociationError(err.message)))
                 )
             })
         )
@@ -80,15 +106,18 @@ export class AssociationEffects {
 
     /**Update Association */
 
-    updateProductEffects: Observable<Action> = createEffect(
-        () => this.effectsActions.pipe(
-            ofType(AssociationActionType.UPDATE_ASSOCIATION),
-            mergeMap((action: AssociationActions) => {
-                return this.service.updateAssociation(action.payload).pipe(
-                    map((association) => new UpdateAssociationActionSuccess(association)),
-                    catchError((err) => of(new UpdateAssociationActionError(err.message)))
+    updateProduct$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(updateAssociation),
+            switchMap(({ association }) => {
+                return this.service.updateAssociation(association).pipe(
+                    map((association) => updateAssociationSuccess({ association })),
+                    catchError((err) => of(updateAssociationsError(err.message)))
                 )
             })
         )
     );
+
+
 }
+
