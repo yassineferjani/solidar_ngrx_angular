@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap, tap } from 'rxjs';
+import { Observable, catchError, map, mergeMap, of, switchMap, tap } from 'rxjs';
 import { AssociationService } from 'src/app/services/association.service';
 import { createAssociation, 
     createAssociationSuccess, 
@@ -52,17 +52,6 @@ export class AssociationEffects {
             })
         )
     );
-
-    /* 
-
-    createAssociation$ = createEffect(() =>
-        this.actions$.pipe(
-            ofType(createAssociation),
-            switchMap(( {association} ) => this.service.saveAssociation(association)),
-            tap(( association) => console.log('Association data:', association)),
-            map((association) => createAssociationSuccess({ association }))
-        )
-    ); */
 
     createAssociation$ = createEffect(() =>
     this.actions$.pipe(

@@ -41,7 +41,7 @@ export class AssociationNewComponent implements OnInit {
   onSaveAssociation(){
     if (this.associationFormGroup?.invalid)
       return;
-    this.store.dispatch(createAssociation(this.associationFormGroup?.value))
+    this.store.dispatch(createAssociation({association : this.associationFormGroup?.value}))
   }
 
 }

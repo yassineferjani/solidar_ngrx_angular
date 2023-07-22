@@ -150,6 +150,7 @@ const reducer = createReducer<AssociationState>(
         };
     }),
     on(createAssociationSuccess,(state, {association})=>{
+        console.log(association)
         return {
             ...state,
             dataState: AssociationStateEnum.LOADED,

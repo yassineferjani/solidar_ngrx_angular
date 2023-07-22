@@ -23,7 +23,6 @@ export class AssociationService {
   }
 
   saveAssociation(association: Association): Observable<Association> {
-    console.log('Data Sent to Server:', association);
     return this.http.post<Association>(this.host + "/associations", association);
   }
 

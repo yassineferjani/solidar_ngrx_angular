@@ -52,6 +52,6 @@ export class AssociationEditComponent implements OnInit {
     this.submitted=true;
     if (this.associationFormGroup.invalid)
       return;
-    this.store.dispatch(updateAssociation(this.associationFormGroup.value))
+    this.store.dispatch(updateAssociation({association : this.associationFormGroup.value}))
   }
 }
