@@ -28,5 +28,36 @@
       "dateCreation": "2023-12-31",
       "id": 9
     }
+  ],
+
+  "article": [
+    {
+      "id": 3,
+      "name": "Computer",
+      "address": "solidar",
+      "logo": "src",
+      "dateCreation": "1989-08-16"
+    },
+    {
+      "name": "Computer1",
+      "address": "solidar",
+      "logo": "src",
+      "dateCreation": "1989-08-16",
+      "id": 6
+    },
+    {
+      "id": 8,
+      "name": "cqscq",
+      "address": "cqscqsc",
+      "logo": "cqscqscqscqscqscqscqscqscq",
+      "dateCreation": "2023-07-21"
+    },
+    {
+      "name": "yassine",
+      "address": "yassine",
+      "logo": "yassine",
+      "dateCreation": "2023-12-31",
+      "id": 9
+    }
   ]
 }
