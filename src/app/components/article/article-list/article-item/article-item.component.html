@@ -1,1 +1,18 @@
-<p>article-item works!</p>
+<div class="card" *ngIf="article">
+    <div class="card-body">
+      <h5 class="card-title">{{ article.title }}</h5>
+      <p class="card-text">ID: {{ article.id }}</p>
+      <p class="card-text">Title: {{ article.title }}</p>
+      <p class="card-text">date: {{ article.date }}</p>
+      <p class="card-text">Text : {{ article.text }}</p>
+      <div class="d-flex justify-content-between">
+        <button (click)="onDelete(article)" class="btn btn-danger">
+          <i class="fa fa-trash"></i>
+        </button>
+  
+        <button (click)="onEdit(article)" class="btn btn-success">
+          <i class="fa fa-edit"></i>
+        </button>
+      </div>
+    </div>
+  </div>

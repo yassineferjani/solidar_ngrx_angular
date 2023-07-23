@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { ArticleRoutingModule } from './article-routing.module';
 import { ArticleComponent } from './article.component';
 import { ArticleListComponent } from './article-list/article-list.component';
-import { ArticleItemComponent } from './article_list/article-item/article-item.component';
 import { ArticleNewComponent } from './article-new/article-new.component';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
+import { ArticleItemComponent } from './article-list/article-item/article-item.component';
+import { ArticleNavbarComponent } from './article-navbar/article-navbar.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ArticleEditComponent } from './article-edit/article-edit.component';
     ArticleListComponent,
     ArticleItemComponent,
     ArticleNewComponent,
-    ArticleEditComponent
+    ArticleEditComponent,
+    ArticleNavbarComponent
   ],
   imports: [
     CommonModule,

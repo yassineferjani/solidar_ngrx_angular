@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { AssociationState } from "./association.reducer";
+import { AssociationState } from "src/app/store/Association.store";
 
 
 export const selectAssociationState = createFeatureSelector<AssociationState>('Association');

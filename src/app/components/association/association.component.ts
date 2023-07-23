@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
-import { AssociationState, AssociationStateEnum } from 'src/app/ngrx/association/association.reducer';
+import { AssociationState } from 'src/app/store/Association.store';
+import { AssociationStateEnum } from 'src/app/store/AssociationStore.enum';
 
 @Component({
   selector: 'app-association',

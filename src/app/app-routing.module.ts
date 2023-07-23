@@ -5,7 +5,10 @@ import { AssociationComponent } from './components/association/association.compo
 const routes: Routes = [
   {path:"association", loadChildren:()=>import("./components/association/association.module")
     .then(m=> m.AssociationModule)
-}
+}, 
+  {path:"article",loadChildren:()=>import("./components/article/article.module")
+  .then(m=>m.ArticleModule)
+  }
 ];
 
 @NgModule({

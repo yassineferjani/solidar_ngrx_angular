@@ -27,37 +27,31 @@
       "logo": "yassine",
       "dateCreation": "2023-12-31",
       "id": 9
+    },
+    {
+      "id": 10,
+      "name": "scssc",
+      "address": "cqscq",
+      "logo": "cqscqs  qscqscqs",
+      "dateCreation": "2023-07-23"
     }
   ],
-
-  "article": [
+  "articles": [
     {
       "id": 3,
-      "name": "Computer",
-      "address": "solidar",
-      "logo": "src",
-      "dateCreation": "1989-08-16"
+      "title": "Computer",
+      "text": "solidar",
+      "author": "yassine",
+      "date": "1989-08-16",
+      "images": "src"
     },
     {
-      "name": "Computer1",
-      "address": "solidar",
-      "logo": "src",
-      "dateCreation": "1989-08-16",
-      "id": 6
-    },
-    {
-      "id": 8,
-      "name": "cqscq",
-      "address": "cqscqsc",
-      "logo": "cqscqscqscqscqscqscqscqscq",
-      "dateCreation": "2023-07-21"
-    },
-    {
-      "name": "yassine",
-      "address": "yassine",
-      "logo": "yassine",
-      "dateCreation": "2023-12-31",
-      "id": 9
+      "id": 4,
+      "title": "Computer",
+      "text": "solidar",
+      "author": "yassine",
+      "date": "1989-08-16",
+      "images": "src"
     }
   ]
 }

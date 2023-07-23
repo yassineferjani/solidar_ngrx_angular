@@ -1,1 +1,9 @@
-<p>article-list works!</p>
+<div *ngIf="state">
+    <div class="row">
+    <div class="col-md-4" *ngFor="let article of state.articles">
+      <div class="card mb-3">
+        <app-article-item [article]="article"
+          style="display: contents"></app-article-item>
+      </div>
+    </div>
+  </div>
