@@ -18,6 +18,6 @@ export class ArticleItemComponent {
     this.store.dispatch(deleteArticle({article}));
   }
   onEdit(article:Article){
-    this.router.navigateByUrl("/association/edit/"+article.id)
+    this.router.navigateByUrl("/article/edit/"+article.id)
   }
 }

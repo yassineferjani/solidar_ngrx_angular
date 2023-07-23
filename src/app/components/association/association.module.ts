@@ -8,7 +8,7 @@ import { AssociationItemComponent } from './association-list/association-item/as
 import { AssociationNavbarComponent } from './association-navbar/association-navbar.component';
 import { AssociationNewComponent } from './association-new/association-new.component';
 import { AssociationEditComponent } from './association-edit/association-edit.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     AssociationRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     
 
