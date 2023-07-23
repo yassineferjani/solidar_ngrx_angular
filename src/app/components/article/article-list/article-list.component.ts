@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ArticleState } from 'src/app/store/Article.store';
+import { ArticleState } from 'src/app/store/article/Article.store';
 
 @Component({
   selector: 'app-article-list',

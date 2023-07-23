@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { createArticle, newArticle } from 'src/app/ngrx/article/article.actions';
-import { ArticleState } from 'src/app/store/Article.store';
-import { ArticleStateEnum } from 'src/app/store/ArticleStore.enum';
+import { ArticleState } from 'src/app/store/article/Article.store';
+import { ArticleStateEnum } from 'src/app/store/article/ArticleStore.enum';
 
 @Component({
   selector: 'app-article-new',

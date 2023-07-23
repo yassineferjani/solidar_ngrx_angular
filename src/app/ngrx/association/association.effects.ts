@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Observable, catchError, map, mergeMap, of, switchMap, tap } from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 import { AssociationService } from 'src/app/services/association.service';
 import { createAssociation, 
     createAssociationSuccess, 

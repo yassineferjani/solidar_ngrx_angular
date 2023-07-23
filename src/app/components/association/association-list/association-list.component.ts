@@ -1,5 +1,5 @@
 import { Component,Input } from '@angular/core';
-import { AssociationState } from 'src/app/store/Association.store';
+import { AssociationState } from 'src/app/store/association/Association.store';
 
 @Component({
   selector: 'app-association-list',

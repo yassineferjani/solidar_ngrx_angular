@@ -1,4 +1,4 @@
-import { Article } from "../models/Article.model";
+import { Article } from "src/app/models/Article.model";
 import { ArticleStateEnum } from "./ArticleStore.enum";
 
 export interface ArticleState {

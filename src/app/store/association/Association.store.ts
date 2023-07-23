@@ -1,4 +1,4 @@
-import { Association } from "../models/Association.model";
+import { Association } from "../../models/Association.model";
 import { AssociationStateEnum } from "./AssociationStore.enum";
 
 export interface AssociationState {

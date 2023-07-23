@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { editArticle, updateArticle } from 'src/app/ngrx/article/article.actions';
-import { ArticleState } from 'src/app/store/Article.store';
-import { ArticleStateEnum } from 'src/app/store/ArticleStore.enum';
+import { ArticleState } from 'src/app/store/article/Article.store';
+import { ArticleStateEnum } from 'src/app/store/article/ArticleStore.enum';
 
 @Component({
   selector: 'app-article-edit',

@@ -1,8 +1,7 @@
 import { Action, createReducer, on } from "@ngrx/store";
-import { Association } from "src/app/models/Association.model";
 import { createAssociation, createAssociationSuccess, createAssociationsError, deleteAssociation, deleteAssociationSuccess, deleteAssociationsError, editAssociation, editAssociationError, editAssociationSuccess, getAssociations, getAssociationsError, getAssociationsSuccess, newAssociation, newAssociationError, newAssociationSuccess, updateAssociation, updateAssociationSuccess, updateAssociationsError } from "./association.actions";
-import { AssociationState } from "src/app/store/Association.store";
-import { AssociationStateEnum } from "src/app/store/AssociationStore.enum";
+import { AssociationState } from "src/app/store/association/Association.store";
+import { AssociationStateEnum } from "src/app/store/association/AssociationStore.enum";
 
 
 const initialState: AssociationState = {

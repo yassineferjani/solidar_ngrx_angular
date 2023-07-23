@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from "@ngrx/store";
-import { ArticleState } from "src/app/store/Article.store";
-import { ArticleStateEnum } from "src/app/store/ArticleStore.enum";
+import { ArticleStateEnum } from "src/app/store/article/ArticleStore.enum";
 import { createArticle, createArticleSuccess, createArticlesError, deleteArticle, deleteArticleSuccess, deleteArticlesError, editArticle, editArticleError, editArticleSuccess, getArticles, getArticlesError, getArticlesSuccess, newArticle, newArticleError, newArticleSuccess, updateArticle, updateArticleSuccess, updateArticlesError } from "./article.actions";
+import { ArticleState } from "src/app/store/article/Article.store";
 
 
 const initialState: ArticleState = {
