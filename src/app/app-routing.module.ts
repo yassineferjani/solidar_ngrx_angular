@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AssociationComponent } from './components/association/association.component';
 
 const routes: Routes = [
   {path:"association", loadChildren:()=>import("./components/association/association.module")
@@ -8,6 +7,15 @@ const routes: Routes = [
 }, 
   {path:"article",loadChildren:()=>import("./components/article/article.module")
   .then(m=>m.ArticleModule)
+  },
+
+  {
+    path:"membership", loadChildren:()=> import("./components/membership/membership.module")
+  .then(m=>m.MembershipModule)
+},
+  {
+    path:"publication", loadChildren:()=>import("./components/publication/publication.module")
+    .then(m=>m.PublicationModule)
   }
 ];
 

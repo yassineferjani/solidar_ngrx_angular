@@ -12,6 +12,10 @@ import { AssociationEffects } from './ngrx/association/association.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {  articleReducer } from './ngrx/article/article.reducer';
 import { ArticleEffects } from './ngrx/article/article.effects';
+import { MembershipEffects } from './ngrx/membership/membership.effects';
+import { PublicationEffects } from './ngrx/publication/publication.effects';
+import { membershipReducer } from './ngrx/membership/membership.reducer';
+import { publicationReducer } from './ngrx/publication/publication.reducer';
 
 @NgModule({
   declarations: [
@@ -24,9 +28,18 @@ import { ArticleEffects } from './ngrx/article/article.effects';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    StoreModule.forRoot({catalogAssociation:associationReducer,
-      catalogArticle: articleReducer}),
-    EffectsModule.forRoot([AssociationEffects, ArticleEffects]),
+    StoreModule.forRoot({
+      catalogAssociation:associationReducer,
+      catalogArticle: articleReducer, 
+      catalogMembership: membershipReducer , 
+      catalogPublication: publicationReducer
+    }),
+    EffectsModule.forRoot([
+      AssociationEffects, 
+      ArticleEffects, 
+      MembershipEffects, 
+      PublicationEffects
+    ]),
     StoreDevtoolsModule.instrument(),
 
   ],
