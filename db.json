@@ -32,5 +32,15 @@
       "date": "1989-08-16",
       "images": "src"
     }
+  ],
+  "memberships": [
+    {
+      "uuid": 4,
+      "firstname": "Computer",
+      "lastname": "solidar",
+      "id": "yassine",
+      "birthDate": "1989-08-16",
+      "type": "src"
+    }
   ]
 }

@@ -1,1 +1,9 @@
-<p>membership-list works!</p>
+<div *ngIf="state">
+    <div class="row">
+    <div class="col-md-4" *ngFor="let membership of state.memberships">
+      <div class="card mb-3">
+        <app-membership-item [membership]="membership"
+          style="display: contents"></app-membership-item>
+      </div>
+    </div>
+  </div>

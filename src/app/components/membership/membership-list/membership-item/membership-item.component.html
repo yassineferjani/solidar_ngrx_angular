@@ -1,1 +1,18 @@
-<p>membership-item works!</p>
+<div class="card" *ngIf="membership">
+    <div class="card-body">
+      <h5 class="card-title">{{ membership.id }}</h5>
+      <p class="card-text">Firstname: {{ membership.firstname }}</p>
+      <p class="card-text">Lastname: {{ membership.lastname }}</p>
+      <p class="card-text">Date of Birth: {{ membership.birthDate }}</p>
+      <p class="card-text">type Membership : {{ membership.type }}</p>
+      <div class="d-flex justify-content-between">
+        <button (click)="onDelete(membership)" class="btn btn-danger">
+          <i class="fa fa-trash"></i>
+        </button>
+  
+        <button (click)="onEdit(membership)" class="btn btn-success">
+          <i class="fa fa-edit"></i>
+        </button>
+      </div>
+    </div>
+  </div>
