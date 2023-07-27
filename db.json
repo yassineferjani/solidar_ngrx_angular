@@ -42,5 +42,17 @@
       "birthDate": "1989-08-16",
       "type": "src"
     }
+  ],
+  "publications": [
+    {
+      "id": 3,
+      "title": "Computer",
+      "intro": "solidar",
+      "author": "src",
+      "images": "sssss",
+      "path": "aaaa",
+      "date": "1989-08-16"
+
+    }
   ]
 }

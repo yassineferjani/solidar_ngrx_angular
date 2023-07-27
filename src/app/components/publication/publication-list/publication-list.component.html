@@ -1,1 +1,9 @@
-<p>publication-list works!</p>
+<div *ngIf="state">
+    <div class="row">
+    <div class="col-md-4" *ngFor="let publication of state.publications">
+      <div class="card mb-3">
+        <app-publication-item [publication]="publication"
+          style="display: contents"></app-publication-item>
+      </div>
+    </div>
+  </div>

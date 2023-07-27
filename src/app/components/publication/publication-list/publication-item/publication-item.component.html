@@ -1,1 +1,21 @@
-<p>publication-item works!</p>
+<div class="card" *ngIf="publication">
+    <div class="card-body">
+      <h5 class="card-title">{{ publication.id }}</h5>
+      <p class="card-text">Title: {{ publication.title }}</p>
+      <p class="card-text">Author: {{ publication.author }}</p>
+      <p class="card-text">Intro: {{ publication.intro }}</p>
+      <p class="card-text">Image : {{ publication.images }}</p>
+      <p class="card-text">Date : {{ publication.date }}</p>
+      <p class="card-text">Path : {{ publication.path }}</p>
+
+      <div class="d-flex justify-content-between">
+        <button (click)="onDelete(publication)" class="btn btn-danger">
+          <i class="fa fa-trash"></i>
+        </button>
+  
+        <button (click)="onEdit(publication)" class="btn btn-success">
+          <i class="fa fa-edit"></i>
+        </button>
+      </div>
+    </div>
+  </div>
