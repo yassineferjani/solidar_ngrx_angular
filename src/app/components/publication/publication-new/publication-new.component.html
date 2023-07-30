@@ -1,1 +1,48 @@
-<p>publication-new works!</p>
+<div class="container">
+    <ng-container *ngIf="pubFormGroup">
+        <ng-container *ngIf="state as data">
+            <ng-container *ngIf="data.dataState == PublicationStateEnum.LOADING">
+                Loading...
+            </ng-container>
+            <ng-container *ngIf="data.dataState == PublicationStateEnum.LOADED">
+                <div class="alert-success container p-3 m-3">
+                    <span>Association Saved Successfully</span>
+                    <button class="btn btn-success ml-3" (click)="newPub()">New Product</button>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="data.dataState == PublicationStateEnum.NEW">
+                <form [formGroup]="pubFormGroup">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" formControlName="title"
+                            [ngClass]="{'is-invalid': submitted && pubFormGroup.controls['title'].errors}">
+                        <div *ngIf="submitted && pubFormGroup.controls['title'].errors" class="invalid-feedback">
+                            <div *ngIf="pubFormGroup.controls['title'].errors['required']">Name is Required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Author</label>
+                        <input type="text" class="form-control" formControlName="author">
+                    </div>
+                    <div class="form-group">
+                        <label>Intro</label>
+                        <input type="text" class="form-control" formControlName="intro">
+                    </div>
+                    <div class="form-group">
+                        <label>Images</label>
+                        <input type="text" class="form-control" formControlName="images">
+                    </div>
+                    <div class="form-group">
+                        <label>Path</label>
+                        <input type="text" class="form-control" formControlName="path">
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" class="form-control" formControlName="date">
+                    </div>
+                    <button class="btn btn-success" (click)="onSavePub()">Save</button>
+                </form>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</div>
