@@ -35,12 +35,12 @@
   ],
   "memberships": [
     {
-      "uuid": 4,
-      "firstname": "Computer",
-      "lastname": "solidar",
-      "id": "yassine",
-      "birthDate": "1989-08-16",
-      "type": "src"
+      "firstname": "yassine",
+      "lastname": "ferjani",
+      "cin": "05481952",
+      "birthDate": "2023-12-31",
+      "type": "test",
+      "id": 1
     }
   ],
   "publications": [

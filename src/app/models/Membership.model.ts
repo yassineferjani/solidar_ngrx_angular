@@ -1,8 +1,8 @@
 export interface Membership{
-    uuid: number,
+    id: number,
     firstname : string,
     lastname: string,
-    id : number
+    cin : number
     birthDate : Date,
     type: string
 }

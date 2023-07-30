@@ -1,1 +1,49 @@
-<p>membership-edit works!</p>
+<div class="container">
+    <ng-container *ngIf="memberFormGroup">
+        <ng-container *ngIf="state as data">
+            <ng-container *ngIf="data.dataState == MembershipStateEnum.LOADING">
+                Loading...
+            </ng-container>
+            <ng-container *ngIf="data.dataState == MembershipStateEnum.ERROR">
+                {{state.errorMessage}}
+            </ng-container>
+            <ng-container *ngIf="data.dataState == MembershipStateEnum.UPDATED">
+                <div class="alert-success container p-3 m-3">
+                    <span>Member Updated Successfully</span>
+                    <button class="btn btn-success ml-3" (click)="updated()">OKI</button>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="data.dataState == MembershipStateEnum.EDIT">
+                <form [formGroup]="memberFormGroup" (ngSubmit)="onUpdateMember()">
+
+                    <div class="form-group">
+                        <label for="name">ID</label>
+                        <label>{{memberFormGroup.controls['id'].value}}</label>
+                        <input type="hidden" formControlName="id" id="id">
+                    </div>
+                    <div class="form-group">
+                        <label>Firstname</label>
+                        <input type="text" class="form-control" formControlName="firstname">
+                    </div>
+                    <div class="form-group">
+                        <label>Lastname</label>
+                        <input type="text" class="form-control" formControlName="lastname">
+                    </div>
+                    <div class="form-group">
+                        <label>CIN</label>
+                        <input type="text" class="form-control" formControlName="cin">
+                    </div>
+                    <div class="form-group">
+                        <label>Type</label>
+                        <input type="text" class="form-control" formControlName="type">
+                    </div>
+                    <div class="form-group">
+                        <label>Birth Date</label>
+                        <input type="date" class="form-control" formControlName="birthDate">
+                    </div>
+                    <button class="btn btn-success" type="submit">Save</button>
+                </form>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</div>

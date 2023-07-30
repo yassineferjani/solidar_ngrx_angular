@@ -18,6 +18,6 @@ export class MembershipItemComponent {
     this.store.dispatch(deleteMembership({membership}));
   }
   onEdit(membership:Membership){
-    this.router.navigateByUrl("/article/edit/"+membership.id)
+    this.router.navigateByUrl("/membership/edit/"+membership.id)
   }
 }

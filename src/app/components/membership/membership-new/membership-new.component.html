@@ -1,1 +1,44 @@
-<p>membership-new works!</p>
+<div class="container">
+    <ng-container *ngIf="memberFormGroup">
+        <ng-container *ngIf="state as data">
+            <ng-container *ngIf="data.dataState == MembershipStateEnum.LOADING">
+                Loading...
+            </ng-container>
+            <ng-container *ngIf="data.dataState == MembershipStateEnum.LOADED">
+                <div class="alert-success container p-3 m-3">
+                    <span>Association Saved Successfully</span>
+                    <button class="btn btn-success ml-3" (click)="newMember()">New Product</button>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="data.dataState == MembershipStateEnum.NEW">
+                <form [formGroup]="memberFormGroup">
+                    <div class="form-group">
+                        <label>Id</label>
+                        <input type="text" class="form-control" formControlName="cin"
+                            [ngClass]="{'is-invalid': submitted && memberFormGroup.controls['id'].errors}">
+                        <div *ngIf="submitted && memberFormGroup.controls['cin'].errors" class="invalid-feedback">
+                            <div *ngIf="memberFormGroup.controls['cin'].errors['required']">Id is Required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Firstname</label>
+                        <input type="text" class="form-control" formControlName="firstname">
+                    </div>
+                    <div class="form-group">
+                        <label>Lastname</label>
+                        <input type="text" class="form-control" formControlName="lastname">
+                    </div>
+                    <div class="form-group">
+                        <label>Type</label>
+                        <input type="text" class="form-control" formControlName="type">
+                    </div>
+                    <div class="form-group">
+                        <label>Birth Date</label>
+                        <input type="date" class="form-control" formControlName="birthDate">
+                    </div>
+                    <button class="btn btn-success" (click)="onSaveMember()">Save</button>
+                </form>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</div>
